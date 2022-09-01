@@ -1,0 +1,6 @@
+server.port=8010
+spring.data.mongodb.database= SCM
+spring.data.mongodb.host=localhost
+spring.data.mongodb.port=27017
+spring.main.allow-circular-references= true
+spring.mail.debug=true

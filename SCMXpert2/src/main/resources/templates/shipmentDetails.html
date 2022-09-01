@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Shipment</title>
+<style type="text/css">
+ body {
+ height:100vh;
+    background-image:url("https://www.joc.com/sites/default/files/field_feature_image/import%20surge.png")!important;
+    background-position:center;
+    background-size:cover;
+    font-family: system-ui;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+  }
+  
+.card{
+border-radius: 25px;
+background-color:rgba(0,0,0,0.5)!important;
+box-shadow: 0 0 17px #fff;
+height:160vh;
+width:150vh;
+display:flex;
+}
+
+.form-control{
+background-color:#484848!important;
+color:#fff!important;
+border:none!important;
+box-shadow: rgba(0, 0, 0, 1) 0px 2px 4px 0px inset;
+ 
+}
+
+.form-select{
+background-color:#484848!important;
+color:#fff!important;
+border:none!important;
+box-shadow: rgba(0, 0, 0, 1) 0px 2px 4px 0px inset;
+
+}
+
+</style>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/css/shipment.css" rel="stylesheet">
+
+</head>
+<body>
+
+      
+ 	 <div class="container py-5 h-100">
+
+   
+      <div class="col-6 col-md-6 ">
+          <div class="card" style="border-radius: 15px;">
+           
+	<div class="m-4 ">
+
+     <h3 class="mb-5 text-center"style="color:white; font-weight:bolder; font-family:Bebas Neue;">Create Shipment</h3>
+			<div th:if="${param.success}">
+					<div class="alert alert-info">Your Shipment Created  successfully </div>
+				</div>
+    <form th:action="@{/addShipment}" method="post" >
+        <div class="row mb-3">
+            <label for="invoiceNumber" class="col-sm-3 col-form-label" style="color:white">Shipment/Invoice Number</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control"  name="invoiceNumber" placeholder="Shipment/Invoice Number" pattern="[a-zA-Z0-9]+" title="Accept only Numbers" required>
+            </div>
+        </div>
+         <div class="row mb-3">
+            <label for="containerNumber" class="col-sm-3 col-form-label" style="color:white">Container Number</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="containerNumber" placeholder="Container Number"  pattern="[a-zA-Z0-9]+" title="Accept only Numbers"  required>
+            </div>
+        </div>
+         <div class="row mb-3">
+                 <label class="col-sm-3 col-form-label" for="shipmentDescription" style="color:white">Shipment Description</label>
+        <div class="col-sm-3">
+            <textarea class="form-control" name="shipmentDescription" placeholder="Enter Your Description"
+            style="overflow:auto;resize:none" rows="4" cols="20"  required></textarea>
+        </div>
+        </div>
+         <div class="row mb-3">
+          <label for="routeDetail" class="col-sm-3 col-form-label" style="color:white">Route Details ID</label>
+   		 <div class="col-sm-3">
+        <select class="form-select" >
+            <option style="color:white">Select Route</option>
+           <option>US - Hyderabad, India</option>
+           <option>US - Chennai, India</option>
+           <option>US - Mumbai, India</option>
+           <option>US - Delhi, India</option>
+        </select>
+    </div>
+        </div>
+         <div class="row mb-3">
+            <label for="goodsType" class="col-sm-3 col-form-label" style="color:white" >Goods Type</label>
+   		 <div class="col-sm-3">
+        <select class="form-select" name="goodsType">
+            <option>Select Goods</option>
+            <option >Pharmacy</option>
+            <option>Electronics</option>
+            <option>House-hold</option>
+        </select>
+    </div>
+        </div>
+         <div class="row mb-3">
+             <label for="device" class="col-sm-3 col-form-label"style="color:white">Device ID</label>
+   		 <div class="col-sm-3">
+        <select class="form-select" name="device">
+            <option>Select Devices ID</option>
+            <option>163075649</option>
+            <option>163075648</option>
+            <option >163075647</option>
+            <option >163075646</option>
+        </select>
+    </div>
+        </div>
+         <div class="row mb-3">
+          <label for="expectedDeliverydate" class="col-sm-3 col-form-label" style="color:white">Expected Delivery Date</label>
+         <div class=" col-sm-3 md-form md-outline input-with-post-icon datepicker">
+  		<input placeholder="Expected Delivery Date" type="date" name="expectedDeliverydate" class="form-control">
+ 		</div>
+		</div>
+       
+         <div class="row mb-3">
+            <label for="poNumber" class="col-sm-3 col-form-label" style="color:white">PO Number</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="poNumber" placeholder="PONumber" pattern="[0-9]+" title="Accept only Numbers" required>
+            </div>
+        </div>
+         <div class="row mb-3">
+            <label for="deliveryNumber" class="col-sm-3 col-form-label" style="color:white">Delivery Number</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="deliveryNumber" placeholder="DeliveryNumber" pattern="[0-9]+" title="Accept only Numbers" required>
+            </div>
+        </div>
+         <div class="row mb-3">
+            <label for="NdcNumber" class="col-sm-3 col-form-label" style="color:white">NDC Number</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="NdcNumber" placeholder="NDCNumber"  pattern="[0-9]+" title="Accept only Numbers" required>
+            </div>
+        </div>
+         <div class="row mb-3">
+            <label for="batchId" class="col-sm-3 col-form-label" style="color:white">Batch Id</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="batchId" placeholder="BatchId"  required>
+            </div>
+        </div>
+         <div class="row mb-3">
+            <label for="serialNumber" class="col-sm-3 col-form-label" style="color:white">Serial Number of Goods</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="serialNumber" placeholder="Serial Number of Goods"   pattern="[0-9]+" title="Accept only Numbers"required>
+            </div>
+        </div>
+        
+       
+        <div class="row mb-5">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="reset" class="btn  btn-light" style="color:black">Cancel Shipments </button>
+                <button type="submit" class="btn  btn-light" style="color:black">Create Shipment</button>
+            </div>
+           
+        </div>
+      
+    </form>
+</div>
+</div>
+</div>
+</div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/rowreorder/1.2.8/js/dataTables.rowReorder.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+    <script src="../scripts/dashboardscripts.js"></script>
+</body>
+</html>

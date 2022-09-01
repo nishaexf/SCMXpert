@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sign up</title>
+<style type="text/css">
+video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.vh-100 {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card{
+width:400px;
+height:651px!important;
+margin: 7% auto;
+border-radius: 25px;
+background-color:rgba(0,0,0,0.1)!important;
+box-shadow: 0 0 17px #fff;
+}
+
+.form-outline{
+margin-top:5px!important;
+}
+
+input{
+margin-top:0%!important;
+margin-bottom:2%;
+}
+.form-label{
+margin-bottom: 0.3rem!important;
+}
+.center{
+color:#fff;
+}
+.form-label{
+
+color:#fff;
+}
+
+.btn{
+background-color:#fff!important;
+}
+
+</style>
+</head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+<body>
+<video class="vid" src="https://player.vimeo.com/external/468462481.sd.mp4?s=d68ef5be6a270bd96c166fe85569852c2c456e5c&profile_id=164&oauth2_token_id=57447761" autoplay loop playsinline muted></video>
+<section class="vh-100 bg-image">
+ <div class="container py-5 h-100">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+   
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5 ">
+              <h2 class="center text-medium text-center mb-3" style="font-family:Bebas Neue; font-weight:bold;">Create an Account</h2>
+			<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered!</div>
+				</div>
+				<div th:if="${param.error}">
+					<div class="alert alert-info">Required all fields</div>
+				</div>
+        <form th:action="@{/register}" method="post" th:object="${user}">
+
+                <div class="form-outline ">
+                  <label class="form-label" for="firstName" >First Name </label>
+						<input id="firstName" class="form-control " th:field="*{firstName}" placeholder="First Name"/>
+							  <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p> 
+                </div>
+				
+				 <div class="form-outline">
+                  <label class="form-label"  for="lastName">Last Name </label>
+						<input
+							id="lastName" class="form-control " th:field="*{lastName}" autofocus="autofocus" placeholder="Last Name"/>
+							 <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p> 
+                </div>
+		
+                <div class="form-outline">
+						<label class="form-label mt-2" for="email">Email </label>
+						 <input
+							id="email" class="form-control" th:field="*{email}"placeholder="email"/>
+			 	  <div class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div> 
+  
+					</div>
+
+					<div class="form-outline mb-4">
+						<label class="form-label" for="password">Password </label> 
+						<input id="password" type="password" class="form-control" name="password"
+							th:field="*{password}" placeholder="Password"/>
+		 			  <div class="has-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>  
+					</div>
+
+							<div class="row"> 
+						<div class="form-group">
+								<div class="col-md-12 g-recaptcha" data-sitekey="6Lcc0HwUAAAAAKNJBjHgioF2h4FALhdILADh-or6"></div>
+							</div>
+				 <h4 class="mb-4"></h4>
+               <div class="form-outline mb-4">
+						<button type="submit" class="btn">Register</button>
+					
+						<p class="  text-center text-muted mt-3 mb-0" style="color:#fff!important;">Already registered? <a href="/" th:href="@{/login}"style="color:#fff!important;">Login
+								here</a></p>
+					</div>
+</div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</section>
+	
+</body>
+</html>

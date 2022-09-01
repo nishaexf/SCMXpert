@@ -1,0 +1,12 @@
+
+u	java:S112#"FDefine and throw a dedicated exception instead of using a generic one.(Ë¦½ÕøÿÿÿÿHRMAJORZ
+CODE_SMELL
+D
+java:S21190"Save and re-use this "Random".(ú›î1HRCRITICALZBUG
+c	java:S1062"9Replace this use of System.out or System.err by a logger.(–Éœ¾HRMAJORZ
+CODE_SMELL
+h	java:S106b"9Replace this use of System.out or System.err by a logger.(‡Ô”ÌùÿÿÿÿHRMAJORZ
+CODE_SMELL
+l
+java:S1126q"AReplace this if-then-else statement by a single return statement.(³û¹ÚHRMINORZ
+CODE_SMELL
